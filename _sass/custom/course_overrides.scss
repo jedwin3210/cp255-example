@@ -16,3 +16,291 @@ div.site-header {
 .site-logo {
   background-position: center;
 }
+
+
+// ============================================================
+// Styles ported from the original CP255 site (cp255_web)
+// Course schedule week tables, resource link chips, and the
+// custom "finalproj" callout.
+// ============================================================
+
+table.week {
+    table-layout: fixed; /* Ensures columns are evenly spaced */
+    width: 100%; /* Ensure full width for the table */
+}
+
+
+table.week tr th:first-child,
+table.week tr td:first-child {
+    width: 22% !important; /* Narrower lecture/lab column */
+}
+
+table.week tr th:nth-child(2),
+table.week tr td:nth-child(2) {
+    width: 50% !important; /* Wider topics column */
+}
+
+table.week tr th:nth-child(3),
+table.week tr td:nth-child(3) {
+    width: 28% !important; /* Slightly narrower resources */
+}
+
+table.week tr td:nth-child(2) > p:first-of-type {
+    margin: 0; /* Remove unnecessary margins for the first paragraph in the second column */
+}
+
+table.week ul {
+    font-size: 0.9em; /* Slightly smaller font for list items */
+    margin: 0 0 0 1rem; /* Indent list items */
+}
+
+table.week td:nth-child(2) ul {
+    font-size: 1em; /* Match base size for topics column only */
+}
+
+table.week .label {
+    font-size: 0.75em !important; /* Override global font size */
+    margin: 0 0.25rem 0 0; /* Adjust spacing around labels */
+}
+
+table.week .label.label-red {
+  font-size: 1.02em !important; /* Slightly larger for due items */
+}
+
+table.week .label.label-assignment,
+table.week .label.label-orange {
+  font-size: 0.98em !important; /* Slightly larger for release items */
+}
+
+table.week .resources-title {
+  margin: 0 0 0.25rem 0;
+  font-weight: 600;
+  font-size: 0.75em;
+  color: inherit;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+table.week ul.resources li {
+    margin: 0 0 0.35rem 0;
+    line-height: 1.35;
+}
+
+table.week ul.resources li:last-child {
+    margin-bottom: 0;
+}
+
+table.week ul.resources a {
+    display: inline-block;
+}
+
+
+table.week .title {
+    font-weight: 500; /* Moderate font weight for titles */
+}
+
+table.week.recess,
+table.week.recess td,
+table.week.recess th {
+    background-color: #f4f4f4;
+    color: #646464;
+}
+
+table.week.recess a,
+table.week.recess .title,
+table.week.recess li,
+table.week.recess p,
+table.week.recess time {
+    color: #646464 !important;
+}
+
+table.week.recess .lecture.content-type,
+table.week.recess .lab.content-type {
+    background: rgba(0, 0, 0, 0.04);
+    border-left: 4px solid #bdbdbd;
+    color: #646464;
+    box-shadow: none;
+}
+
+table.week.recess .lecture.content-type::before,
+table.week.recess .lab.content-type::before {
+    color: #646464;
+}
+
+.label-gray {
+    background-color: #d6d6d6;
+    color: #6f6f6f;
+}
+
+blockquote.lecture {
+    display: block;
+    width: calc(100% - 4rem); /* Add padding but keep within container */
+    margin: 1.5rem auto; /* Center blockquotes with consistent spacing */
+    padding: 1.5rem; /* Add internal spacing */
+    background: rgba(0, 123, 255, 0.1); /* Light blue background */
+    border-left: 4px solid #007bff; /* Blue border */
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+p.lab.content-type,
+blockquote.lab.content-type {
+    background: rgba(255, 193, 7, 0.2);
+    border-left: 4px solid #f0c84b;
+    border-radius: 6px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+    padding: 0.8rem;
+}
+
+p.lab.content-type::before,
+blockquote.lab.content-type::before {
+    color: #b8860b;
+    content: "Lab";
+    display: block;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    padding-bottom: 0.125rem;
+}
+
+.course-schedule .table-wrapper {
+    width: 90%; /* Restrict to 90% of the parent width */
+    margin: 0 auto; /* Center-align within the container */
+    padding: 1rem; /* Add consistent padding */
+}
+.course-schedule table.week {
+    width: 100%;
+}
+
+.course-schedule blockquote.lecture {
+    margin: 2rem 0;
+    padding: 1.5rem;
+}
+
+.lecture .ul {
+    list-style-type: none; /* Remove bullet dots from list items */
+}
+
+.lecture .li {
+    list-style: none; /* Remove bullet dots from list items */
+    margin-left: 1.5rem; /* Indent list items */
+    font-size: 1em; /* Ensure consistent font size */
+}
+
+.lecture .slides {
+    background-color: rgba(31, 128, 238, 0.269);
+    border: rgb(57, 141, 237, 0.301);
+    color: black;
+}
+
+.lecture .slides:hover {
+    background-color: rgba(122, 73, 237, 0.26);
+}
+
+.lecture .ref {
+    background-color: #865aff30;
+    border: rgb(85, 0, 254);
+    color: black;
+}
+
+.lecture .ref:hover {
+    background-color: #d2a21e; 
+}
+
+.lecture .assignment {
+    background-color: #548985;
+    border: rgb(255, 255, 255);
+    color: black;
+}
+
+.lecture .assignment:hover {
+    background-color:#3e6663;
+}
+
+.lecture .solutions {
+    background-color:  rgba(255, 199, 199, .5);
+    border: rgba(255, 199, 199, 1);
+    color: black;
+}
+
+.lecture .solutions:hover {
+    background-color: rgba(255, 199, 199, 1);
+}
+
+.lecture .video,
+.lab .video {
+    background-color: rgba(252, 208, 29, 0.231);
+    border: rgba(238, 221, 31, 0.203);
+    color: black;
+}
+
+.lecture .video:hover,
+.lab .video:hover {
+    background-color: rgba(186, 140, 255, 0.306);
+}
+
+.lecture .ext_ref,
+.lab .ext_ref {
+    background-color: #cee3b5;
+    border: #cee3b5;
+    color: black;
+}
+.lecture .ext_ref:hover,
+.lab .ext_ref:hover {
+    background-color: #cee3b5;
+}
+
+
+// Module label color used on the course schedule (ported from cp255_web)
+.label-module4 {
+  background-color: #A5B18A;
+}
+
+// Exact colors for the custom "finalproj" callout (ported from cp255_web)
+.finalproj h3 {
+  font-size: 1.35rem;
+}
+
+p.finalproj,
+blockquote.finalproj {
+  background: rgba(255, 208, 128, 0.2);
+  border-left: 4px solid #ffb433;
+}
+
+p.finalproj::before,
+blockquote.finalproj::before {
+  color: #ffb433;
+}
+
+p.finalproj > .finalproj-title,
+blockquote.finalproj > .finalproj-title {
+  color: #ffb433;
+}
+
+
+// Schedule "flag" items (e.g. assignment due labels). These were <p> elements
+// directly inside <ul> on the original site, which is invalid markup; they are
+// now marker-less list items styled to render the same way.
+table.week li.schedule-flag {
+  list-style: none;
+  margin-top: 0.5rem;
+  margin-left: -1rem;
+}
+
+// The original CP255 site was light-mode only; its hard-coded chip and caption
+// colors need dark-scheme equivalents to stay readable (WCAG AA).
+@if $color-scheme == dark {
+  .lecture .slides,
+  .lecture .ref,
+  .lecture .solutions,
+  .lecture .video,
+  .lab .video {
+    color: #ffffff;
+  }
+
+  // Inline-styled muted captions/footers (e.g. "© 2026 ...") from the source pages.
+  [style*="#6b7280"] {
+    color: #a3adc2 !important;
+  }
+}

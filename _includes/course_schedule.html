@@ -1,0 +1,140 @@
+{%- comment -%}
+  Course schedule, rendered from _data/schedule.yml.
+  Edit that file to update weeks, sessions, topics, and resource links —
+  this template should not need to change.
+{%- endcomment -%}
+<h1>Course Schedule</h1>
+<div class="side-by-side">
+<p class="highlight content-type"><strong>Lectures</strong>: Tuesdays, Thursdays - 12:30 – 2:00 PM (Wurster, 106) <br/><strong>Labs:</strong> Section 1: Thu 2:30 PM - 3:30 PM (214 Wurster) <br/>Section 2: Fri 11:00 AM - 12:00 PM (214 Wurster)<br/><strong>Final Project (FP) Submission:</strong> May 12th, 2026</p>
+</div>
+<p><a class="btn btn-outline" href="#" onclick="jumpToCurrentWeek(); return false;">Jump to Current Week</a></p>
+{%- for module in site.data.schedule.modules %}
+<p> <span class="label {{ module.label_class }}">{{ module.text | escape }}</span></p>
+{%- endfor %}
+{%- for week in site.data.schedule.weeks %}
+<h3 id="week-{{ week.week }}">Week {{ week.week }}</h3>
+{%- if week.module %}
+<p> <span class="label {{ week.module.label_class }}">{{ week.module.text | escape }}</span></p>
+{%- endif %}
+<div class="table-wrapper">
+<table class="week{% if week.recess %} recess{% endif %}" data-start="{{ week.start }}" data-end="{{ week.end }}">
+<tr>
+<th></th>
+<th>Topics</th>
+<th>Resources</th>
+</tr>
+{%- for session in week.sessions %}
+<tr class="{{ session.type }}">
+<td>
+<p class="{{ session.type }} content-type">
+{%- for d in session.dates -%}
+<time datetime="{{ d.date }}">{{ d.text }}</time>
+{%- unless forloop.last %} &amp; {% endunless -%}
+{%- endfor -%}
+</p>
+</td>
+<td class="topics">
+<ul>
+{%- for topic in session.topics %}
+<li>
+<a class="title">{% if topic.title_html %}{{ topic.title_html }}{% else %}{{ topic.title | escape }}{% endif %}</a>
+{%- if topic.subtopics %}
+<ul>
+{%- for sub in topic.subtopics %}
+<li>{{ sub | escape }}</li>
+{%- endfor %}
+</ul>
+{%- endif %}
+</li>
+{%- endfor %}
+{%- for flag in session.flags %}
+<li class="schedule-flag"><span class="label {{ flag.label_class }}">{{ flag.text | escape }}</span></li>
+{%- endfor %}
+</ul>
+</td>
+<td class="resources">
+{%- for group in session.resources %}
+<p class="resources-title">{{ group.title | escape }}</p>
+<ul class="resources resources-{{ group.class }}">
+{%- for item in group.items %}
+<li><a class="{{ item.class }}" href="{% if item.internal %}{{ item.url | relative_url }}{% else %}{{ item.url }}{% endif %}" target="_blank">{% if item.html %}{{ item.html }}{% else %}{{ item.text | escape }}{% endif %}</a></li>
+{%- endfor %}
+</ul>
+{%- endfor %}
+</td>
+</tr>
+{%- endfor %}
+</table>
+</div>
+{%- endfor %}
+<script>
+function getPacificDateString() {
+    // Returns YYYY-MM-DD in America/Los_Angeles regardless of viewer timezone.
+    // Build from parts to avoid locale fallback changing the format.
+    const parts = new Intl.DateTimeFormat("en-US", {
+        timeZone: "America/Los_Angeles",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    }).formatToParts(new Date());
+    const map = {};
+    for (const part of parts) {
+        map[part.type] = part.value;
+    }
+    return `${map.year}-${map.month}-${map.day}`;
+}
+
+function jumpToCurrentWeek() {
+    const todayStr = getPacificDateString();
+    const tables = document.querySelectorAll('table.week');
+    let targetWeek = null;
+
+    tables.forEach(table => {
+        const startStr = table.dataset.start;
+        const endStr = table.dataset.end;
+
+        if (todayStr >= startStr && todayStr <= endStr) {
+            targetWeek = table;
+        } else if (todayStr < startStr && !targetWeek) {
+            targetWeek = table;
+        }
+    });
+
+    if (!targetWeek && tables.length > 0) {
+        targetWeek = tables[tables.length - 1];
+    }
+
+    if (targetWeek) {
+        // Find the h3 header for this week by traversing backwards from the table wrapper
+        const tableWrapper = targetWeek.closest('.table-wrapper');
+        let weekHeader = null;
+        let sibling = tableWrapper.previousElementSibling;
+
+        // Look backwards through siblings to find the h3
+        while (sibling) {
+            if (sibling.tagName === 'H3') {
+                weekHeader = sibling;
+                break;
+            }
+            sibling = sibling.previousElementSibling;
+        }
+
+        // Scroll to the week header if found, otherwise scroll to the table
+        if (weekHeader) {
+            weekHeader.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else {
+            tableWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        targetWeek.style.transition = 'box-shadow 0.3s ease';
+        targetWeek.style.boxShadow = '0 0 10px 3px rgba(74, 96, 160, 0.5)';
+        setTimeout(() => {
+            targetWeek.style.boxShadow = 'none';
+        }, 2000);
+    }
+}
+
+if (window.location.hash === '#current') {
+    document.addEventListener('DOMContentLoaded', jumpToCurrentWeek);
+}
+</script>

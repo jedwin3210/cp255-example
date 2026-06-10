@@ -1,0 +1,1064 @@
+# Course schedule data, rendered by _includes/course_schedule.html
+#
+# Structure:
+#   modules: the legend shown above the schedule (text + label color class)
+#   weeks:
+#     - week: <number>            -> "Week N" heading (anchor #week-N)
+#       module: {text, label_class}  -> label shown under the week heading
+#       start / end: ISO dates    -> used by the "Jump to Current Week" button
+#       recess: true              -> grays out the week (optional)
+#       sessions:                 -> one table row each
+#         - type: lecture | lab
+#           dates: [{date: ISO date, text: shown text}]  (labs may list two)
+#           topics:
+#             - title: session title       (plain text)
+#               title_html: ...            (use instead of title when the
+#                                           heading needs inline HTML, e.g. a
+#                                           link to a guest speaker)
+#               subtopics: [plain strings] (optional)
+#           flags: [{text, label_class}]   (assignment due labels etc., optional)
+#           resources:                     (optional)
+#             - title: Slides | Required | Optional
+#               class: slides | required | optional
+#               items:
+#                 - class: slides | ref | ext_ref | video
+#                   text: link text        (or `html:` when it needs markup,
+#                                           e.g. <strong> around book titles)
+#                   url: link target
+#                   internal: true         (for same-site links; prefixes baseurl)
+modules:
+- label_class: label-purple
+  text: 'Module 1: Computational Thinking & Programming Basics'
+- label_class: label-blue
+  text: 'Module 2: Urban Data Wrangling & Visualization'
+- label_class: label-module4
+  text: 'Module 3: Data Analytics in Action'
+weeks:
+- week: 1
+  module:
+    label_class: label-purple
+    text: Module 1
+  start: '2026-01-20'
+  end: '2026-01-23'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-01-20'
+      text: Tue, Jan 20
+    topics:
+    - title: Course Orientation & MTC Presentation
+      subtopics:
+      - Course logistics
+      - MTC presentation
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W1S1
+        url: https://drive.google.com/file/d/1QWrFqfHn9s9yZUi_C6G2MBXSLTUnPvve/view?usp=sharing
+      - class: slides
+        text: MTC Slides
+        url: https://drive.google.com/file/d/1lnng6PGacoLaoma_xMNU1-aTxpMODrp2/view?usp=sharing
+  - type: lecture
+    dates:
+    - date: '2026-01-22'
+      text: Thu, Jan 22
+    topics:
+    - title: Computational Thinking Foundations
+      subtopics:
+      - Intro to Computational Thinking (CT)
+      - Problem definition
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W1S2
+        url: https://drive.google.com/file/d/1Z-7MzvrDsymRwjHPLyvleCz6D8v6OZAG/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        text: 'Read: Bad Choices Ch.1&2'
+        url: https://bookofbadchoices.com/index.html#page/3
+      - class: ref
+        text: 'Read: Computational Thinking by Jeannette M. Wing'
+        url: https://www.cs.cmu.edu/~15110-s13/Wing06-ct.pdf
+  - type: lab
+    dates:
+    - date: '2026-01-22'
+      text: Thu, Jan 22
+    - date: '2026-01-23'
+      text: Fri, Jan 23
+    topics:
+    - title: Lab Setup & Logistics
+- week: 2
+  module:
+    label_class: label-purple
+    text: Module 1
+  start: '2026-01-27'
+  end: '2026-01-30'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-01-27'
+      text: Tue, Jan 27
+    topics:
+    - title: The Data Behind the Map
+      subtopics:
+      - Intro to Geospatial Data
+      - CRS & Projection overview
+      - Raster & Vector data
+      - 'CT: Decomposition & Abstraction in Maps'
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W2S1
+        url: https://drive.google.com/file/d/10oADV0pS4B1tSjBOm-zThNPHzu9i9JqM/view?usp=share_link
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        text: 'Read: Geographic Data Science with Python - Part I (up to spatial weights)'
+        url: https://geographicdata.science/book/intro_part_i.html
+    - title: Optional
+      class: optional
+      items:
+      - class: ext_ref
+        text: USGS - Map Projections
+        url: https://pubs.usgs.gov/gip/70047422/report.pdf
+      - class: ext_ref
+        text: The True Size of Africa
+        url: http://kai.sub.blue/images/True-Size-of-Africa-kk-v3.pdf
+      - class: ext_ref
+        text: Axis Map - Map Projections
+        url: https://www.axismaps.com/guide/map-projections
+  - type: lecture
+    dates:
+    - date: '2026-01-29'
+      text: Thu, Jan 29
+    topics:
+    - title: Python Ecosystem & Basics I
+      subtopics:
+      - Intro to Python & OSS
+      - Variables
+      - Operators
+      - Core data types
+      - Collection data types
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W2S2
+        url: https://drive.google.com/file/d/1sn71xV3n0TRnjkmE6qKezXUVDMTHYOXc/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        text: 'Read: Variables (Basics)'
+        url: /docs/tutorials/basic/variables/
+        internal: true
+      - class: ref
+        text: 'Read: Strings (Basics)'
+        url: /docs/tutorials/basic/strings/
+        internal: true
+      - class: video
+        text: 'Watch: Variables (cs50)'
+        url: https://cs50.harvard.edu/python/shorts/variables/
+      - class: video
+        text: 'Watch: Lists (cs50)'
+        url: https://cs50.harvard.edu/python/shorts/lists/
+    - title: Optional
+      class: optional
+      items:
+      - class: ext_ref
+        text: Python Standard Library
+        url: https://docs.python.org/3/library/index.html
+      - class: ref
+        text: 'Read: Variables (Advanced)'
+        url: /docs/tutorials/advanced/variables/
+        internal: true
+  - type: lab
+    dates:
+    - date: '2026-01-29'
+      text: Thu, Jan 29
+    - date: '2026-01-30'
+      text: Fri, Jan 30
+    topics:
+    - title: 'Flipped Lab: Python Basics I'
+      subtopics:
+      - Python basics flipped lab
+- week: 3
+  module:
+    label_class: label-purple
+    text: Module 1
+  start: '2026-02-03'
+  end: '2026-02-06'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-02-03'
+      text: Tue, Feb 3
+    topics:
+    - title: Python Basics II
+      subtopics:
+      - Truthiness
+      - Conditionals
+      - Loops
+    flags:
+    - label_class: label-red
+      text: 'FP: Team formation due'
+    - label_class: label-assignment
+      text: A1 Release
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W3S1
+        url: https://drive.google.com/file/d/1LAIKKepY1mv2DwSzY02O7rUy8r30UNL_/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: video
+        text: 'Watch: Conditionals-Full (cs50)'
+        url: https://cs50.harvard.edu/python/weeks/1/
+      - class: video
+        text: 'Watch: Conditionals-Short (cs50)'
+        url: https://cs50.harvard.edu/python/shorts/conditionals/
+      - class: video
+        text: 'Watch: Loops (cs50)'
+        url: https://cs50.harvard.edu/python/shorts/for_loops/
+      - class: video
+        text: 'Watch: Boolean Expressions (cs50)'
+        url: https://cs50.harvard.edu/python/shorts/boolean_expressions/
+  - type: lecture
+    dates:
+    - date: '2026-02-05'
+      text: Thu, Feb 5
+    topics:
+    - title: Control Flow
+      subtopics:
+      - Type Recap
+      - for loop Patterns
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W3S2
+        url: https://drive.google.com/file/d/1MURKxNOh80SLdA_3yNq_pbt5I70fSgI0/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        text: 'Read: Conditional Execution (py4e)'
+        url: https://www.py4e.com/html3/03-conditional
+      - class: video
+        text: 'Watch: Conditional Execution - PartI & II (py4e)'
+        url: https://www.py4e.com/lessons/logic
+      - class: ref
+        text: 'Read: Iteration (only for loop) (py4e)'
+        url: https://www.py4e.com/html3/03-conditional
+      - class: video
+        text: 'Watch: Loops and Iterations Part II, III, IV (py4e)'
+        url: https://www.py4e.com/lessons/loops
+  - type: lab
+    dates:
+    - date: '2026-02-05'
+      text: Thu, Feb 5
+    - date: '2026-02-06'
+      text: Fri, Feb 6
+    topics:
+    - title: Module I Review & Practice
+      subtopics:
+      - Module I overview
+      - Python basics practice
+- week: 4
+  module:
+    label_class: label-blue
+    text: Module 2
+  start: '2026-02-10'
+  end: '2026-02-13'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-02-10'
+      text: Tue, Feb 10
+    topics:
+    - title: Working with Urban Data
+      subtopics:
+      - Intro to urban data
+      - Urban data types & formats
+      - Project structure
+    flags:
+    - label_class: label-orange
+      text: A1 Due
+    - label_class: label-assignment
+      text: A2 Release
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W4S1
+        url: https://drive.google.com/file/d/1bwIuFvvol6c_wPQqX0xs4omOwVqf-fWs/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        html: 'Read: <strong>Dark Data. Ch.1</strong> Dark Data: What We Don''t See Shapes Our World'
+        url: https://www-jstor-org.libproxy.berkeley.edu/stable/j.ctvmd85db
+      - class: ref
+        text: 'Read: Glaeser, E. L., Kominers, S. D., Luca, M., & Naik, N. (2018). Big data and big cities: The promises and
+          limitations of improved measures of urban life.'
+        url: https://research-ebsco-com.libproxy.berkeley.edu/c/p54vgy/viewer/pdf/5jaxv75lv5?route=details
+  - type: lecture
+    dates:
+    - date: '2026-02-12'
+      text: Thu, Feb 12
+    topics:
+    - title: 'Dictionaries & Pandas I: Wrangling'
+      subtopics:
+      - Python Dictionaries
+      - Data wrangling with Pandas
+      - Vectorized operations
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W4S2
+        url: https://drive.google.com/file/d/17lYlk79oE6FfZ7UmqAsPYdV6XJRHfvH0/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        text: 'Read: Getting Started with pandas'
+        url: https://wesmckinney.com/book/pandas-basics
+      - class: ref
+        text: Pandas comparison with spreadsheets
+        url: https://pandas.pydata.org/docs/getting_started/comparison/comparison_with_spreadsheets.html
+      - class: video
+        text: 'Watch: Dictionaries (cs50)'
+        url: https://cs50.harvard.edu/python/2022/shorts/dictionaries/
+      - class: video
+        text: 'Watch: Dictionary Methods (cs50)'
+        url: https://cs50.harvard.edu/python/2022/shorts/dictionary_methods/
+    - title: Optional
+      class: optional
+      items:
+      - class: ext_ref
+        text: Pandas Visual Intro
+        url: https://jalammar.github.io/gentle-visual-intro-to-data-analysis-python-pandas/
+      - class: video
+        text: 'Watch: Pandas (5 yrs ago) (yt)'
+        url: https://youtu.be/ZyhVh-qRZPA?si=oLXM3L2qMYXUbcEo
+  - type: lab
+    dates:
+    - date: '2026-02-12'
+      text: Thu, Feb 12
+    - date: '2026-02-13'
+      text: Fri, Feb 13
+    topics:
+    - title: 'Lab: A1 Walkthrough'
+- week: 5
+  module:
+    label_class: label-blue
+    text: Module 2
+  start: '2026-02-17'
+  end: '2026-02-20'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-02-17'
+      text: Tue, Feb 17
+    topics:
+    - title: 'Pandas II: Data Exploration, Sanity Checks & Grouping'
+      subtopics:
+      - Data exploration
+      - Sanity checks
+      - Groupby & merge
+      - Plotting with Seaborn
+    flags:
+    - label_class: label-red
+      text: FP Proposal Due
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: No Slides, Review W5S1 Activity
+        url: https://bcourses.berkeley.edu/courses/1551662/assignments/9053855
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        html: 'Read: <strong>Dark Data. Ch.2</strong> Discovering Dark Data: What We Collect and What We Don''t'
+        url: https://www-jstor-org.libproxy.berkeley.edu/stable/j.ctvmd85db
+      - class: ref
+        text: 'Read: Pandas Data Explore'
+        url: /docs/tutorials/basic/pandas_data_explore/
+        internal: true
+    - title: Optional
+      class: optional
+      items:
+      - class: ext_ref
+        text: Pandas Pivoting & Reshaping
+        url: https://jalammar.github.io/visualizing-pandas-pivoting-and-reshaping/
+      - class: video
+        text: 'Watch: Pandas-Groupby (yt)'
+        url: https://youtu.be/DkjCaAMBGWM?si=hGVtUdDhbpfaj7Pp&t=941
+  - type: lecture
+    dates:
+    - date: '2026-02-19'
+      text: Thu, Feb 19
+    topics:
+    - title: 'GeoPandas I: Spatial Data Model + CRS Management'
+      subtopics:
+      - Geospatial data types in Shapely
+      - GeoDataFrame and GeoSeries
+      - Reading & writing geospatial data
+      - CRS management recap (applied)
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W5S2
+        url: https://drive.google.com/file/d/1d_mF0s3xZ7UL0JCXQ82czTk2jSyg5tfD/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: video
+        text: 'Watch: Luc Anselin: What is spatial analysis?'
+        url: https://youtu.be/JwHxJsesG2Y?si=xBbkwL-KbFrU0dAX
+  - type: lab
+    dates:
+    - date: '2026-02-19'
+      text: Thu, Feb 19
+    - date: '2026-02-20'
+      text: Fri, Feb 20
+    topics:
+    - title: 'Lab: Pandas recap and GeoPandas basics'
+- week: 6
+  module:
+    label_class: label-blue
+    text: Module 2
+  start: '2026-02-24'
+  end: '2026-02-27'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-02-24'
+      text: Tue, Feb 24
+    topics:
+    - title: 'GeoPandas II: Spatial Predicates + Spatial Join'
+      subtopics:
+      - Spatial relationship (predicates)
+      - Spatial operations
+      - Spatial join
+    flags:
+    - label_class: label-orange
+      text: A2 Due
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W6S1
+        url: https://drive.google.com/file/d/1UQ1lKpdE-mJgYm0U3D-lsWCteSCUD6UF/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        html: 'Read: <strong>Dark Data. Ch.3</strong> Definitions and Dark Data: What Do You Want To Know?'
+        url: https://www-jstor-org.libproxy.berkeley.edu/stable/j.ctvmd85db
+      - class: ref
+        text: 'Read: Spatial Relationship'
+        url: https://pythongis.org/part2/chapter-06/nb/05-spatial-queries.html
+      - class: ext_ref
+        text: 'Practice: Spatial Relationships'
+        url: /docs/tutorials/sandbox/predicates_lab/
+        internal: true
+  - type: lecture
+    dates:
+    - date: '2026-02-26'
+      text: Thu, Feb 26
+    topics:
+    - title: 'GeoPandas III: Spatial Operations + Joins + Overlay'
+      subtopics:
+      - Spatial join & Overlay
+      - Missing Data in Pandas and GeoPandas
+      - Hands on workshop
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W6S2
+        url: https://drive.google.com/file/d/1L97hcnzdh1AuqisTipbSt_6nHCYto0Hj/view?usp=sharing
+    - title: Optional
+      class: optional
+      items:
+      - class: video
+        text: Introduction to GeoPandas and its Python ecosystem
+        url: https://av.tib.eu/media/59414
+  - type: lab
+    dates:
+    - date: '2026-02-26'
+      text: Thu, Feb 26
+    - date: '2026-02-27'
+      text: Fri, Feb 27
+    topics:
+    - title: 'Lab: Spatial queries + joins + operations'
+- week: 7
+  module:
+    label_class: label-blue
+    text: Module 2
+  start: '2026-03-03'
+  end: '2026-03-06'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-03-03'
+      text: Tue, Mar 3
+    topics:
+    - title_html: 'Guest Lecture: <a href="https://dse.berkeley.edu/people/sam-pottinger" rel="noopener noreferrer" target="_blank">Sam
+        Pottinger</a>'
+      subtopics:
+      - Visualization, Interactivity and Co-design in Exploring Humanity and the Built Environment through Data
+    flags:
+    - label_class: label-assignment
+      text: A3 Release
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Guest Lecture Slides - W7S1
+        url: https://docs.google.com/presentation/d/11jmOo_VYgkjALvX-SsmBEKfyGbZ_2TpwJeITVnm1FeM/edit?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        html: 'Read: <strong>Dark Data. Ch.4</strong> Unintentional Dark Data: Saying One Thing, Doing Another'
+        url: https://www-jstor-org.libproxy.berkeley.edu/stable/j.ctvmd85db
+      - class: ref
+        text: 'Read: Design and Redesign in Data Visualization. Martin Wattenberg and Fernanda Viégas. 2015.'
+        url: https://medium.com/@hint_fm/design-and-redesign-4ab77206cf9
+  - type: lecture
+    dates:
+    - date: '2026-03-05'
+      text: Thu, Mar 5
+    topics:
+    - title: Value of Vis
+      subtopics:
+      - Graphical marks
+      - Visual encoding channels
+      - Expressiveness & effectiveness
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W7S2
+        url: https://drive.google.com/file/d/1HEzJj0jdDBuQZUYj3Orsk7fycWZGqHMM/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        html: 'Read: <strong>Fundamentals of Data Visualization, Ch.20</strong>: Redundant coding'
+        url: https://clauswilke.com/dataviz/redundant-coding.html
+  - type: lab
+    dates:
+    - date: '2026-03-05'
+      text: Thu, Mar 5
+    - date: '2026-03-06'
+      text: Fri, Mar 6
+    topics:
+    - title: 'Lab: Practice Pandas Vis'
+- week: 8
+  module:
+    label_class: label-blue
+    text: Module 2
+  start: '2026-03-10'
+  end: '2026-03-13'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-03-10'
+      text: Tue, Mar 10
+    topics:
+    - title: 'Chart Types: Bars & Distributions'
+      subtopics:
+      - Color theory & perception
+      - Color accessibility
+      - Bar Charts
+      - Visualizing Distributions
+      - Hands-on Vis Critique
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W8S1
+        url: https://drive.google.com/file/d/18S7nnJt6jCA2Xb3NZD6YRlhvxj9D7d6p/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        html: 'Read: <strong>Dark Data. Ch.5</strong> Strategic Dark Data: Gaming, Feedback, and Information Asymmetry'
+        url: https://www-jstor-org.libproxy.berkeley.edu/stable/j.ctvmd85db
+      - class: ref
+        html: 'Read: <strong>Fundamentals of Data Visualization, Ch.19:</strong> Common pitfalls of color use'
+        url: https://clauswilke.com/dataviz/color-pitfalls.html
+    - title: Optional
+      class: optional
+      items:
+      - class: ext_ref
+        text: From Data to Vis
+        url: https://www.data-to-viz.com/
+      - class: ext_ref
+        text: Color Brewer
+        url: https://colorbrewer2.org
+      - class: ext_ref
+        text: Coblis (Color Blindness Simulator)
+        url: https://www.color-blindness.com/coblis-color-blindness-simulator/#google_vignette
+      - class: ext_ref
+        text: Datawrapper - A detailed guide to colors in data vis style guides
+        url: https://www.datawrapper.de/blog/colors-for-data-vis-style-guides
+      - class: ext_ref
+        text: 'Urban Institute - Do No Harm Guide: Applying Equity Awareness in Data Visualization'
+        url: https://www.urban.org/sites/default/files/publication/104296/do-no-harm-guide.pdf
+  - type: lecture
+    dates:
+    - date: '2026-03-12'
+      text: Thu, Mar 12
+    topics:
+    - title: 'Chart Types: Lines & Correlations'
+      subtopics:
+      - Line Charts
+      - (Avoiding) Pie Charts
+      - Visualizing Correlations
+      - Seaborn & marginal plots
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W8S2
+        url: https://drive.google.com/file/d/1ptqxyC0uryKn27m4gR75ZxMisrSRZiCf/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ext_ref
+        text: Pypalletes (Color maps for Python)
+        url: https://github.com/JosephBARBIERDARNAL/pypalettes
+    - title: Optional
+      class: optional
+      items:
+      - class: ext_ref
+        text: Python Graph Gallery
+        url: https://python-graph-gallery.com
+      - class: ext_ref
+        html: 'Read: <strong>Fundamentals of Data Visualization, Ch.19:</strong> Common pitfalls of color use'
+        url: https://clauswilke.com/dataviz/color-pitfalls.html
+  - type: lab
+    dates:
+    - date: '2026-03-12'
+      text: Thu, Mar 12
+    - date: '2026-03-13'
+      text: Fri, Mar 13
+    topics:
+    - title: 'Lab: ArcGIS StoryMaps & GitHub Pages'
+    resources:
+    - title: Required
+      class: required
+      items:
+      - class: ext_ref
+        html: Github for Planners. <strong>Watch up to 29:25.</strong>
+        url: https://www.youtube.com/watch?v=gVa4d728T0k
+- week: 9
+  module:
+    label_class: label-blue
+    text: Module 2
+  start: '2026-03-17'
+  end: '2026-03-20'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-03-17'
+      text: Tue, Mar 17
+    topics:
+    - title_html: 'Guest Lecture: <a href="https://priceschool.usc.edu/faculty/directory/geoff-boeing/" rel="noopener noreferrer"
+        target="_blank">Geoff Boeing</a>'
+      subtopics:
+      - Spatial Network Analysis
+    flags:
+    - label_class: label-orange
+      text: A3 Due
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Coming Soon
+        url: '#'
+      - class: ext_ref
+        text: In-Class Activity (press open in Colab)
+        url: https://github.com/gboeing/osmnx-workshop
+  - type: lecture
+    dates:
+    - date: '2026-03-19'
+      text: Thu, Mar 19
+    topics:
+    - title: 'Thematic Mapping: Map Types & Classification Schemes'
+      subtopics:
+      - Elements of Maps
+      - Choropleth maps
+      - Proportional symbol maps
+      - Classification schemes
+      - Data Normalization
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W9S2
+        url: https://drive.google.com/file/d/1LIGLAHLnJucxFRTULsOeh8Tpw0v7lhDx/view?usp=sharing
+  - type: lab
+    dates:
+    - date: '2026-03-19'
+      text: Thu, Mar 19
+    - date: '2026-03-20'
+      text: Fri, Mar 20
+    topics:
+    - title: A3 Walkthrough & Module II Workshop
+- week: 10
+  module:
+    label_class: label-gray
+    text: Recess
+  recess: true
+  start: '2026-03-24'
+  end: '2026-03-27'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-03-24'
+      text: Tue, Mar 24
+    topics:
+    - title: Recess
+  - type: lecture
+    dates:
+    - date: '2026-03-26'
+      text: Thu, Mar 26
+    topics:
+    - title: Recess
+  - type: lab
+    dates:
+    - date: '2026-03-26'
+      text: Thu, Mar 26
+    - date: '2026-03-27'
+      text: Fri, Mar 27
+    topics:
+    - title: Academic Holiday
+- week: 11
+  module:
+    label_class: label-module4
+    text: Module 3
+  start: '2026-03-31'
+  end: '2026-04-03'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-03-31'
+      text: Tue, Mar 31
+    topics:
+    - title: Land Use & Zoning Data
+      subtopics:
+      - Aggregation & spatial join
+      - Large data visualization
+      - LonBoard
+      - Writing your Own Functions
+    flags:
+    - label_class: label-red
+      text: FP Midterm Due
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W11S1
+        url: https://drive.google.com/file/d/1Gc1GhSv7xhvmR_4CxdwUMzlLQYHPQ-3G/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        text: 'Read: Porta, S., Crucitti, P., & Latora, V. (2006). The network analysis of urban streets: A dual approach'
+        url: https://pdf.sciencedirectassets.com/271529/1-s2.0-S0378437106X06167/1-s2.0-S0378437106001282/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEKz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCIHGbVpLUJjgvpr1xkJp23kVtMzPzO9FMSkvW%2Bn%2FfLAZVAiBxLPK3aWz5dM97c4Vs1P3j20bMaVCRhrgdkm9MT0mLoSqzBQh1EAUaDDA1OTAwMzU0Njg2NSIMY4m0LOnYjsRgm4FuKpAFo%2Fd%2Biy%2Fzd0IDVpkmQNXt%2FeuicCEK%2BhpBy7Z1uaZt9bbylsD%2Fw08Rsnp3Q9Ug2WgjmV9hLH5%2BTujLF8nA3Kvr%2FAzhWzvGkzd0pvitlUS3H7rHc786RbRw266BhPQGXESV8bInDx3H%2BuXOj7U0FcmCLV9C88wPtYienn%2BcDmv%2F%2BCxKhfx52cfyxRqa4NacCebu6lC5s51oP6TFSoTtSQ8iZd7VvbrFq7UC%2Faek%2FAcFdjMfipQfNu4vIIciCJBArHWKbmmeMpchLLIlR%2FVY7BP5hoM6FOE%2BCFPwSAQa5SqRNJlQ%2B9yItEW7AMVmShHSzgpCxvlCTkZy%2FVeqdXI8EHXIVtcyXrz9w7tsPtZLBlNM6bu2nnSUwx1C%2FZ%2FbBYAYbpHJlcYEj24MAmdniyV8sYxKuSDbMULOOmN2qcJ47OrBm0nGajANQkZ0DxMPI6ItQYuqaDgCy9Ybl0s0jV%2FxaWT5URXAWMOSUS7YW7BFheoJMzl8ovTkWk5TEZO0kCMUO4vuzsI30sf0lPeNQoOq4VzyUtVR%2Boa%2B7B6V%2BB65F7Ei3%2B6G5cW9e4rXW99wJaj8Zz5IXnEYtKzvr8E1SN645ltiyejbzluKyNP7A8MmNRlP%2F38y8zRA7fFpx4rGGwU7zzlkJDkLMckG9p11T9AyH8nVTAtl8g5QYpiZISCs1Y4CTMdp65hTsngjVXTjAS6WQDwEYPGpv09BrnnSUEYAiLkUFSVmKMJe549Z1tMsWxMMnFNZtmi55RRrdzooy4oSgvXe2uJqCogNhJC45ipJf1asXkhR%2FcPBrJLuDAzMBv5%2FBROsfjL2Xp7vtafCrXD7HEcDVM1DKnTAYYiSqzwOWStZ6O8%2Fa%2FrMRtZzvojXk7NHsfswlKqxywY6sgGqahqKIozTpg7sH7SOQhAEh4pOi7QF%2BMoASTDC2pgrM7N85uUNT3Uo65VxUg46pc1XIY30sdj%2Bmw0BigZQlnVfa4Igkq%2B%2Bg85eevKytlExADF%2BB%2BtCzhIMoYs6vsKsOCBfw4o9cBjWwk2I%2FttewgZc8fEg%2BWQfMlSLszq7p7SdxVhi7G8HftwG2a6G9b9d92dQpULz7KVXwgO4CJ86Urvt9aqEOesTecBYhE50Ygx1YIUX&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260118T043605Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTY3SDAEF6E%2F20260118%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=36d073a62987995832b1bb9609385214059da7017f6e3771d73402de639e29e1&hash=adf6b2dcbfcf56df84ef671bba4a5ba0c26b1f6b87536672da9320e705442631&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0378437106001282&tid=spdf-838d98ca-eb34-423f-a8ad-006cd9a3f9a0&sid=e82be3545b1a49425478eed-05aeb80affe6gxrqa&type=client&tsoh=d3d3LXNjaWVuY2VkaXJlY3QtY29tLmxpYnByb3h5LmJlcmtlbGV5LmVkdQ%3D%3D&rh=d3d3LXNjaWVuY2VkaXJlY3QtY29tLmxpYnByb3h5LmJlcmtlbGV5LmVkdQ%3D%3D&ua=1b13560502025955&rr=9bfb63ab19e27e27&cc=us
+      - class: ext_ref
+        text: 'Play: Function Sandbox'
+        url: /docs/tutorials/sandbox/functions_lab/
+        internal: true
+    - title: Optional
+      class: optional
+      items:
+      - class: ext_ref
+        text: 'Watch: Creating Modules'
+        url: https://cs50.harvard.edu/python/shorts/creating_modules_packages/
+  - type: lecture
+    dates:
+    - date: '2026-04-02'
+      text: Thu, Apr 2
+    topics:
+    - title: Network Analysis & Routing
+      subtopics:
+      - Basic Street Network Measures
+      - Isochrones and distance based metrics
+      - Network-based catchments (distance-bounded subgraphs)
+      - Programs vs. Modules
+      - Functions Continued
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W11S2
+        url: https://drive.google.com/file/d/1grboUOVjNUqa1t6BQPyY5-3V7mAnhEKT/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: video
+        text: 'Watch: Functions (CS50-shorts)'
+        url: https://cs50.harvard.edu/python/shorts/functions/
+      - class: video
+        text: 'Watch: Return Values (CS50-shorts)'
+        url: https://cs50.harvard.edu/python/shorts/return_values/
+      - class: video
+        text: 'Watch: Side Effects (CS50-shorts)'
+        url: https://cs50.harvard.edu/python/shorts/side_effects/
+      - class: ref
+        text: 'Read: Boeing, G. (2019). Urban spatial order: Street network orientation, configuration, and entropy.'
+        url: https://link.springer.com/article/10.1007/s41109-019-0189-1
+      - class: ext_ref
+        text: Prettymapp
+        url: https://prettymapp.streamlit.app/
+  - type: lab
+    dates:
+    - date: '2026-04-02'
+      text: Thu, Apr 2
+    - date: '2026-04-03'
+      text: Fri, Apr 3
+    topics:
+    - title: 'Lab: Research Question Activity + Functions Review'
+- week: 12
+  module:
+    label_class: label-module4
+    text: Module 3
+  start: '2026-04-07'
+  end: '2026-04-10'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-04-07'
+      text: Tue, Apr 7
+    topics:
+    - title: Errors, Tracebacks, & Debugging
+      subtopics:
+      - Error & Tracebacks
+      - Error Types
+      - Debugging
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W12S1
+        url: https://drive.google.com/file/d/1-m6R8DN4bJMcBhz5MaMDZrm0cp5-JM5n/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        text: 'Read: How to think like a computer scientist? 1.6-1.10 (Debugging & error types)'
+        url: https://runestone.academy/ns/books/published/thinkcspy/GeneralIntro/WhatisDebugging.html
+      - class: video
+        text: 'Watch: Debugging (CS50)'
+        url: https://cs50.harvard.edu/python/shorts/debugging/
+  - type: lecture
+    dates:
+    - date: '2026-04-09'
+      text: Thu, Apr 9
+    topics:
+    - title: Misinformation, Deceptive Visualizations, & Spurious Correlations
+      subtopics:
+      - Deceptive Patterns
+      - Spurious Correlation
+      - Modifiable Areal Unit Problem (MAUP)
+      - Ecological Fallacy
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W12S2
+        url: https://drive.google.com/file/d/1O8JK87-oegFZJsQtZxDc4IHGNEUEcyVX/view?usp=sharing
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        html: 'Read: <strong>Dark Data. Ch.6</strong> Intentional Dark Data: Fraud and Deception'
+        url: https://www-jstor-org.libproxy.berkeley.edu/stable/j.ctvmd85db
+      - class: ref
+        text: 'Read: Gordon Pennycook et al. (2015). On the reception and detection of pseudo-profound bullshit. Judgement
+          and Decision Making'
+        url: https://www.cambridge.org/core/journals/judgment-and-decision-making/article/on-the-reception-and-detection-of-pseudoprofound-bullshit/0D3C87BCC238BCA38BC55E395BDC9999
+      - class: ref
+        text: 'Read: Kwan (2012), The uncertain geographic context problem'
+        url: https://www-tandfonline-com.libproxy.berkeley.edu/doi/pdf/10.1080/00045608.2012.687349?needAccess=true
+      - class: video
+        text: 'Watch: How to Mop the Maup'
+        url: https://www.youtube.com/watch?v=7mt-lpyM1HM
+  - type: lab
+    dates:
+    - date: '2026-04-09'
+      text: Thu, Apr 9
+    - date: '2026-04-10'
+      text: Fri, Apr 10
+    topics:
+    - title: 'Lab: TBA'
+- week: 13
+  module:
+    label_class: label-module4
+    text: Module 3
+  start: '2026-04-14'
+  end: '2026-04-17'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-04-14'
+      text: Tue, Apr 14
+    topics:
+    - title_html: Workshop by <a href="https://bids.berkeley.edu/news/min-ragan-kelley-and-his-journey-back-bids" rel="noopener
+        noreferrer" target="_blank">Min Ragan Kelley:</a>
+      subtopics:
+      - Interactive Visual Analytics
+    flags:
+    - label_class: label-assignment
+      text: A4 Release
+    resources:
+    - title: Required
+      class: required
+      items:
+      - class: ext_ref
+        text: The peril of laziness lost
+        url: https://bcantrill.dtrace.org/2026/04/12/the-peril-of-laziness-lost/
+  - type: lecture
+    dates:
+    - date: '2026-04-16'
+      text: Thu, Apr 16
+    topics:
+    - title: Python Functions & List Comprehensions
+      subtopics:
+      - 'Python Functions: hands-on activity'
+      - List Comprehensions
+    resources:
+    - title: Required
+      class: required
+      items:
+      - class: ref
+        text: 'Read: Páez, A., Scott, D. M., & Morency, C. (2012). Measuring accessibility: positive and normative implementations
+          of various accessibility indicators'
+        url: https://pdf.sciencedirectassets.com/271844/1-s2.0-S0966692312X0005X/1-s2.0-S0966692312000798/main.pdf?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEK3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQDfFdbGV%2Bhn6MNeSK9Wm5FY3ZvMD0Je16Ea3Nj6J8NiWwIhALKEmN54Q0swMx9L5m%2B8Inkw0K3nnpuFffhNBC668Y66KrIFCHUQBRoMMDU5MDAzNTQ2ODY1IgwqNBRgQqm45MRJqQoqjwUExWne4dJ%2B5mwiI6j2g9eGjplO8q5w2oXHskzB%2F%2B04q%2BPC0B64WOGdT2wHiaYO2zi%2Bf0tfrKhhaFAAGmA5jZXf3BCioq87TOuOg6zUxvBCyZBZu516q3QV2HA1C8Zg5BL6VwRcz%2FiCppbr6RLLrws1b95G1WuUXCFzc0KI8z2dcBVf%2FupD4jYSRHmvjnJ7zzXVlN2GBBC5XQggHBq4RVGq9xWxi%2Fhwhk9brGFPuKGNVKOEvciBymncbxeP3a2nmkXqqK2dbY%2BI1z3tJnSX6xxdQmgbtzWf2Qq2kFBZIpcbkgoFnzAd3WN1e6J3QJIlHN8WxwvuAtrjdPzcPeHhzmXmgsmksSP71llfwT07ikr3d0Gu1949X8rfyZeBvjLxucKwdgEQNuuhW7OFGMviKS0UNh2j5pnAsczD1YGInGWxOlUJKGRdfhe%2B7YgIk2ibxGp%2BLupi%2FAMKJhvZVzEpQzGTy7ckiPJK4IbKqjIIUnpCiGRyGiLeXlrLUUp5B3ViSIgZWnyibUZa2t1WrJm4JMLLd1ZjzBz1D8knLUhf7eQBqBcmUQIehegEx6CA0Ax7UqvU1aAZ5ugcQ7NHStVWq6fLtPreeOS3YGoINKeCIShvuHUSS6ojR7lLP2M8VDJ%2B9%2F6vTn91%2B%2Bomz0motX4TbCX%2BbaUBkUBOIlZhAKaDvx7HPySG%2FZjoqrSh4fjjaVl%2BKShd6tqFZQtdMxjAi4UX9pmLJ%2FewoWsbI5o5%2FJ1%2FLc78ywdc7JPdhAkFuCk2nvTKB3C%2BtQ4pqBSleLM21lL12ZzPnZpFIPzMhXnn0eQcAZzkGdfQYKSHsmiJStSpvo8LbYh48l0HO2Q%2BOPMsoiJ5qgAuEE62eseOwSk5QbstXudwMKS4scsGOrABSZ%2Fpcgl6ytF0YvmERTzjf%2FzJYTAoL%2BtN80P7DJOKJ2yRRaXVAdMKz9G324lQsuARc%2FuIPDxs7UgIpc3MCwCldSy7RHgRfcV%2BPVgE02niH%2FEKAC3n910fE1qXig5vOb%2BrdCPt3s70%2FzIVROmLrpY3%2BmnZxtbomJWCf8pJGAmkAQe1uIRgYTeJVFiMU%2FN%2FA68qF%2B73B3GjkrouT6aq8uEg6QdHiDdhXLiQ80%2BmtHieMo8%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20260118T050639Z&X-Amz-SignedHeaders=host&X-Amz-Expires=300&X-Amz-Credential=ASIAQ3PHCVTYRGD6JUMD%2F20260118%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=cf03284c1f9108f42703b765fee974b3792442c3aa43d485d8606e7c124823b8&hash=45f4b05db1fcf3daac0504042029c9729082cafb443cc1307a4d90f976b6ccb0&host=68042c943591013ac2b2430a89b270f6af2c76d8dfd086a07176afe7c76c2c61&pii=S0966692312000798&tid=spdf-576f5b4a-dba9-4321-ab2f-9d3492334f8d&sid=e82be3545b1a49425478eed-05aeb80affe6gxrqa&type=client&tsoh=d3d3LXNjaWVuY2VkaXJlY3QtY29tLmxpYnByb3h5LmJlcmtlbGV5LmVkdQ%3D%3D&rh=d3d3LXNjaWVuY2VkaXJlY3QtY29tLmxpYnByb3h5LmJlcmtlbGV5LmVkdQ%3D%3D&ua=1b13560502025656&rr=9bfb90727cff3ecb&cc=us
+  - type: lab
+    dates:
+    - date: '2026-04-16'
+      text: Thu, Apr 16
+    - date: '2026-04-17'
+      text: Fri, Apr 17
+    topics:
+    - title: 'Lab: Deceptive Vis and Spurious Correlation'
+- week: 14
+  module:
+    label_class: label-module4
+    text: Module 3
+  start: '2026-04-21'
+  end: '2026-04-24'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-04-21'
+      text: Tue, Apr 21
+    topics:
+    - title: 'Advanced Topics: Computer Vision in Planning'
+      subtopics:
+      - Computer vision applications in urban planning
+      - Image-based urban analysis
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W14S1
+        url: https://drive.google.com/file/d/1QXSZZ6_NWLEuMoZraC7rccmw3hVFCjNt/view?usp=sharing
+  - type: lecture
+    dates:
+    - date: '2026-04-23'
+      text: Thu, Apr 23
+    topics:
+    - title: 'Advanced Topics: LLMs in Urban Analytics'
+      subtopics:
+      - 'LLM basics: it''s all about probability'
+    resources:
+    - title: Slides
+      class: slides
+      items:
+      - class: slides
+        text: Lecture Slides - W14S2
+        url: https://drive.google.com/file/d/1SkDdo9a0QWszy4Tx8YwWtL6t9Gk2akgb/view?usp=sharing
+  - type: lab
+    dates:
+    - date: '2026-04-23'
+      text: Thu, Apr 23
+    - date: '2026-04-24'
+      text: Fri, Apr 24
+    topics:
+    - title: TBA
+- week: 15
+  module:
+    label_class: label-module4
+    text: Module 3
+  start: '2026-04-28'
+  end: '2026-05-01'
+  sessions:
+  - type: lecture
+    dates:
+    - date: '2026-04-28'
+      text: Tue, Apr 28
+    topics:
+    - title: 'Workshop: MTC Workshop'
+      subtopics:
+      - Project synthesis & polish
+    flags:
+    - label_class: label-orange
+      text: A4 Due
+  - type: lecture
+    dates:
+    - date: '2026-04-30'
+      text: Thu, Apr 30
+    topics:
+    - title: Final Project Work Session
+      subtopics:
+      - Finalization (StoryMaps/artifacts)
+  - type: lab
+    dates:
+    - date: '2026-04-30'
+      text: Thu, Apr 30
+    - date: '2026-05-01'
+      text: Fri, May 1
+    topics:
+    - title: 'Lab: Final Project Work Session'
